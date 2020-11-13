@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sensirion_shdlc_sfc5xxx.units &mdash; sensirion-shdlc-sfc5xxx 0.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sensirion-shdlc-sfc5xxx
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../shdlc.html">SHDLC Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensirion-shdlc-sfc5xxx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>sensirion_shdlc_sfc5xxx.units</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sensirion_shdlc_sfc5xxx.units</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># (c) Copyright 2020 Sensirion AG, Switzerland</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Sfc5xxxUnitPrefix"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitPrefix">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxUnitPrefix</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An enum containing all available medium unit prefixes with their</span>
+<span class="sd">    corresponding byte values how they are transmitted over SHDLC.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">YOCTO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">24</span><span class="p">,</span> <span class="s2">&quot;Yocto (10^-24)&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>  <span class="c1">#: Yocto (10^-24).</span>
+    <span class="n">ZEPTO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">21</span><span class="p">,</span> <span class="s2">&quot;Zepto (10^-21)&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">)</span>  <span class="c1">#: Zepto (10^-21).</span>
+    <span class="n">ATTO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;Atto (10^-18)&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>  <span class="c1">#: Atto (10^-18).</span>
+    <span class="n">FEMTO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;Femto (10^-15)&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">)</span>  <span class="c1">#: Femto (10^-15).</span>
+    <span class="n">PICO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;Pico (10^-12)&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">)</span>  <span class="c1">#: Pico (10^-12).</span>
+    <span class="n">NANO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Nano (10^-9)&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">)</span>  <span class="c1">#: Nano (10^-9).</span>
+    <span class="n">MICRO</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Micro (10^-6)&quot;</span><span class="p">,</span> <span class="s2">&quot;µ&quot;</span><span class="p">)</span>  <span class="c1">#: Micro (10^-6).</span>
+    <span class="n">MILLI</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Milli (10^-3)&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">)</span>  <span class="c1">#: Milli (10^-3).</span>
+    <span class="n">CENTI</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Centi (10^-2)&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>  <span class="c1">#: Centi (10^-2).</span>
+    <span class="n">DECI</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Deci (10^-1)&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>  <span class="c1">#: Deci (10^-1).</span>
+    <span class="n">ONE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1">#: No prefix (10^0).</span>
+    <span class="n">DECA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Deca (10^1)&quot;</span><span class="p">,</span> <span class="s2">&quot;da&quot;</span><span class="p">)</span>  <span class="c1">#: Deca (10^1).</span>
+    <span class="n">HECTO</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Hecto (10^2)&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>  <span class="c1">#: Hecto (10^2).</span>
+    <span class="n">KILO</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Kilo (10^3)&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>  <span class="c1">#: Kilo (10^3).</span>
+    <span class="n">MEGA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Mega (10^6)&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">)</span>  <span class="c1">#: Mega (10^6).</span>
+    <span class="n">GIGA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Giga (10^9)&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>  <span class="c1">#: Giga (10^9).</span>
+    <span class="n">TERA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;Tera (10^12)&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">)</span>  <span class="c1">#: Tera (10^12).</span>
+    <span class="n">PETA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;Peta (10^15)&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">)</span>  <span class="c1">#: Peta (10^15).</span>
+    <span class="n">EXA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;Exa (10^18)&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">)</span>  <span class="c1">#: Exa (10^18).</span>
+    <span class="n">ZETTA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="s2">&quot;Zetta (10^21)&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">)</span>  <span class="c1">#: Zetta (10^21).</span>
+    <span class="n">YOTTA</span> <span class="o">=</span> <span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="s2">&quot;Yotta (10^24)&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">)</span>  <span class="c1">#: Yotta (10^24).</span>
+    <span class="n">UNDEFINED</span> <span class="o">=</span> <span class="p">(</span><span class="mi">127</span><span class="p">,</span> <span class="s2">&quot;Undefined&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1">#: Undefined.</span>
+
+<div class="viewcode-block" id="Sfc5xxxUnitPrefix.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitPrefix.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor</span>
+
+<span class="sd">        :param int value:</span>
+<span class="sd">            The integer value.</span>
+<span class="sd">        :param str description:</span>
+<span class="sd">            The prefix description.</span>
+<span class="sd">        :param str symbol:</span>
+<span class="sd">            The prefix symbol.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value_</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>  <span class="c1">#: The prefix description (str).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span>  <span class="c1">#: The prefix symbol (str).</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_int</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create the enum value from a given integer value.</span>
+
+<span class="sd">        :param int value:</span>
+<span class="sd">            The integer representation of the unit prefix.</span>
+<span class="sd">        :raises ValueError:</span>
+<span class="sd">            If the enum does not contain an entry for the given value.</span>
+<span class="sd">        :return:</span>
+<span class="sd">            An enum object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            ~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitPrefix</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">Sfc5xxxUnitPrefix</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">item</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid unit prefix value: </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxUnit"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnit">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxUnit</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An enum containing all available medium units with their</span>
+<span class="sd">    corresponding byte values how they are transmitted over SHDLC.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: Norm Liter (0°C, 1013hPa)</span>
+    <span class="n">NORM_LITER</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Norm Liter (0°C, 1013hPa)&quot;</span><span class="p">,</span> <span class="s2">&quot;ln&quot;</span><span class="p">)</span>
+    <span class="c1">#: Standard Liter (20°C, 1013hPa)</span>
+    <span class="n">STANDARD_LITER</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Standard Liter (20°C, 1013hPa)&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
+    <span class="c1">#: Standard Liter (15°C, 1013hPa)</span>
+    <span class="n">STANDARD_LITER_15C</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Standard Liter (15°C, 1013hPa)&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
+    <span class="c1">#: Standard Liter (25°C, 1013hPa)</span>
+    <span class="n">STANDARD_LITER_25C</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Standard Liter (25°C, 1013hPa)&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
+    <span class="c1">#: Standard Liter (70°F, 1013hPa)</span>
+    <span class="n">STANDARD_LITER_70F</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Standard Liter (70°F, 1013hPa)&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
+    <span class="c1">#: Liter (liqui).</span>
+    <span class="n">LITER_LIQUI</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;Liter (liqui)&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">)</span>
+    <span class="c1">#: Gram (g).</span>
+    <span class="n">GRAM</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Gram&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">)</span>
+    <span class="c1">#: Pascal (Pa).</span>
+    <span class="n">PASCAL</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;Pascal&quot;</span><span class="p">,</span> <span class="s2">&quot;Pa&quot;</span><span class="p">)</span>
+    <span class="c1">#: Bar.</span>
+    <span class="n">BAR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="s2">&quot;Bar&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+    <span class="c1">#: Meter H2O (mH2O).</span>
+    <span class="n">METER_H2O</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;Meter H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;mH2O&quot;</span><span class="p">)</span>
+    <span class="c1">#: Inch H2O (iH2O).</span>
+    <span class="n">INCH_H2O</span> <span class="o">=</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="s2">&quot;Inch H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;iH2O&quot;</span><span class="p">)</span>
+    <span class="c1">#: Percent (%).</span>
+    <span class="n">PERCENT</span> <span class="o">=</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="s2">&quot;Percent&quot;</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+    <span class="c1">#: Permil (‰).</span>
+    <span class="n">PERMIL</span> <span class="o">=</span> <span class="p">(</span><span class="mi">251</span><span class="p">,</span> <span class="s2">&quot;Permil&quot;</span><span class="p">,</span> <span class="s2">&quot;‰&quot;</span><span class="p">)</span>
+    <span class="c1">#: 8-Bit Signed Integer.</span>
+    <span class="n">INT8</span> <span class="o">=</span> <span class="p">(</span><span class="mi">252</span><span class="p">,</span> <span class="s2">&quot;8-Bit Signed Integer&quot;</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+    <span class="c1">#: 16-Bit Signed Integer.</span>
+    <span class="n">INT16</span> <span class="o">=</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="s2">&quot;16-Bit Signed Integer&quot;</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+    <span class="c1">#: 32-Bit Signed Integer.</span>
+    <span class="n">INT32</span> <span class="o">=</span> <span class="p">(</span><span class="mi">254</span><span class="p">,</span> <span class="s2">&quot;32-Bit Signed Integer&quot;</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+    <span class="c1">#: Undefined.</span>
+    <span class="n">UNDEFINED</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="s2">&quot;Undefined&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Sfc5xxxUnit.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor</span>
+
+<span class="sd">        :param int value:</span>
+<span class="sd">            The integer value.</span>
+<span class="sd">        :param str description:</span>
+<span class="sd">            The unit description.</span>
+<span class="sd">        :param str symbol:</span>
+<span class="sd">            The unit symbol.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value_</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_int</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create the enum value from a given integer value.</span>
+
+<span class="sd">        :param int value:</span>
+<span class="sd">            The integer representation of the unit.</span>
+<span class="sd">        :raises ValueError:</span>
+<span class="sd">            If the enum does not contain an entry for the given value.</span>
+<span class="sd">        :return:</span>
+<span class="sd">            An enum object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            ~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnit</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">Sfc5xxxUnit</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">item</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid unit value: </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxUnitTimeBase"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitTimeBase">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxUnitTimeBase</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An enum containing all available medium unit time bases with their</span>
+<span class="sd">    corresponding byte values how they are transmitted over SHDLC.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NONE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No Time Base&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1">#: No Time Base.</span>
+    <span class="n">MICROSECOND</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Microsecond&quot;</span><span class="p">,</span> <span class="s2">&quot;µs&quot;</span><span class="p">)</span>  <span class="c1">#: Microsecond (µs).</span>
+    <span class="n">MILLISECOND</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Millisecond&quot;</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">)</span>  <span class="c1">#: Millisecond (ms).</span>
+    <span class="n">SECOND</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Second&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">)</span>  <span class="c1">#: Second (s).</span>
+    <span class="n">MINUTE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Minute&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">)</span>  <span class="c1">#: Minute (min).</span>
+    <span class="n">HOUR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;Hour&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>  <span class="c1">#: Hour (h).</span>
+    <span class="n">DAY</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">)</span>  <span class="c1">#: Day.</span>
+    <span class="n">UNDEFINED</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="s2">&quot;Undefined&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1">#: Undefined.</span>
+
+<div class="viewcode-block" id="Sfc5xxxUnitTimeBase.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitTimeBase.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor</span>
+
+<span class="sd">        :param int value:</span>
+<span class="sd">            The integer value.</span>
+<span class="sd">        :param str description:</span>
+<span class="sd">            The timebase description.</span>
+<span class="sd">        :param str symbol:</span>
+<span class="sd">            The timebase symbol.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value_</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_int</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create the enum value from a given integer value.</span>
+
+<span class="sd">        :param int value:</span>
+<span class="sd">            The integer representation of the timebase.</span>
+<span class="sd">        :raises ValueError:</span>
+<span class="sd">            If the enum does not contain an entry for the given value.</span>
+<span class="sd">        :return:</span>
+<span class="sd">            An enum object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            ~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitTimeBase</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">Sfc5xxxUnitTimeBase</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">item</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid unit time base: </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxMediumUnit"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxMediumUnit">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxMediumUnit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing the medium unit specification used by various SHDLC</span>
+<span class="sd">    commands. It consists of three members:</span>
+
+<span class="sd">      * Prefix (:py:class:`~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitPrefix`)</span>
+<span class="sd">      * Physical Unit (:py:class:`~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnit`)</span>
+<span class="sd">      * Unit Timebase</span>
+<span class="sd">        (:py:class:`~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitTimeBase`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxMediumUnit.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.units.Sfc5xxxMediumUnit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">timebase</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+
+<span class="sd">        :param ~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitPrefix prefix:</span>
+<span class="sd">            The unit prefix.</span>
+<span class="sd">        :param ~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnit unit:</span>
+<span class="sd">            The physical unit.</span>
+<span class="sd">        :param ~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitTimeBase timebase:</span>
+<span class="sd">            The unit time base.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxMediumUnit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1">#: Unit prefix</span>
+        <span class="c1">#: (:py:class:`~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitPrefix`).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
+        <span class="c1">#: Physical unit</span>
+        <span class="c1">#: (:py:class:`~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnit`).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="c1">#: Unit timebase</span>
+        <span class="c1">#: (:py:class:`~sensirion_shdlc_sfc5xxx.units.Sfc5xxxUnitTimeBase`).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timebase</span> <span class="o">=</span> <span class="n">timebase</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pretty-print the unit represented by this object (e.g. &quot;mln/min&quot;).</span>
+
+<span class="sd">        .. note:: Basically this method just appends the ``symbol`` property</span>
+<span class="sd">                  of the unit prefix, physical unit and the timebase. But</span>
+<span class="sd">                  there is some additional logic to get more readable strings</span>
+<span class="sd">                  in some cases. For example &quot;mls/min&quot; is converted to &quot;sccm&quot;</span>
+<span class="sd">                  to be consistent with the unit printed on the label of the</span>
+<span class="sd">                  MFC. And for standard liter units of special temperatures,</span>
+<span class="sd">                  the temperature is appended to the returned string to</span>
+<span class="sd">                  distinguish between them.</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">            Short string representation of prefix, unit and timebase.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">symbol</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">symbol</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timebase</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timebase</span><span class="o">.</span><span class="n">symbol</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;mls/min&#39;</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;sccm&#39;</span>
+        <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;ls/min&#39;</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;slm&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">==</span> <span class="n">Sfc5xxxUnit</span><span class="o">.</span><span class="n">STANDARD_LITER_15C</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; (15°C)&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">==</span> <span class="n">Sfc5xxxUnit</span><span class="o">.</span><span class="n">STANDARD_LITER_25C</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; (25°C)&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">==</span> <span class="n">Sfc5xxxUnit</span><span class="o">.</span><span class="n">STANDARD_LITER_70F</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; (70°F)&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Equal-operator overload.</span>
+
+<span class="sd">        :param other:</span>
+<span class="sd">            The other object to compare with.</span>
+<span class="sd">        :return:</span>
+<span class="sd">            ``True`` if both objects return the same unit, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span> <span class="ow">and</span> \
+               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span> <span class="ow">and</span> \
+               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timebase</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">timebase</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../master/_modules/sensirion_shdlc_sfc5xxx/units.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

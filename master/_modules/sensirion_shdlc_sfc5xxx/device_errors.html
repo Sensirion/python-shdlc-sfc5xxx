@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sensirion_shdlc_sfc5xxx.device_errors &mdash; sensirion-shdlc-sfc5xxx 0.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sensirion-shdlc-sfc5xxx
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../shdlc.html">SHDLC Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensirion-shdlc-sfc5xxx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>sensirion_shdlc_sfc5xxx.device_errors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sensirion_shdlc_sfc5xxx.device_errors</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># (c) Copyright 2020 Sensirion AG, Switzerland</span>
+
+<span class="c1">##############################################################################</span>
+<span class="c1">##############################################################################</span>
+<span class="c1">#                 _____         _    _ _______ _____ ____  _   _</span>
+<span class="c1">#                / ____|   /\  | |  | |__   __|_   _/ __ \| \ | |</span>
+<span class="c1">#               | |       /  \ | |  | |  | |    | || |  | |  \| |</span>
+<span class="c1">#               | |      / /\ \| |  | |  | |    | || |  | | . ` |</span>
+<span class="c1">#               | |____ / ____ \ |__| |  | |   _| || |__| | |\  |</span>
+<span class="c1">#                \_____/_/    \_\____/   |_|  |_____\____/|_| \_|</span>
+<span class="c1">#</span>
+<span class="c1">#     THIS FILE IS AUTOMATICALLY GENERATED AND MUST NOT BE EDITED MANUALLY!</span>
+<span class="c1">#</span>
+<span class="c1"># Generator:    sensirion-shdlc-interface-generator 0.8.2</span>
+<span class="c1"># Product:      SFC5xxx</span>
+<span class="c1"># Version:      0.1.0</span>
+<span class="c1">#</span>
+<span class="c1">##############################################################################</span>
+<span class="c1">##############################################################################</span>
+
+<span class="c1"># flake8: noqa</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">sensirion_shdlc_driver.errors</span> <span class="kn">import</span> <span class="n">ShdlcDeviceError</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Sfc5xxxFunctionalityNotImplementedError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFunctionalityNotImplementedError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFunctionalityNotImplementedError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The requested functionality is not implemented (yet) on the device.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFunctionalityNotImplementedError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFunctionalityNotImplementedError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFunctionalityNotImplementedError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x20</span><span class="p">,</span>
+            <span class="s2">&quot;The requested functionality is not implemented (yet) on the &quot;</span>
+            <span class="s2">&quot;device.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxNvmAddressOutOfRangeError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxNvmAddressOutOfRangeError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxNvmAddressOutOfRangeError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Address of is outside of the non-volatile memory address space.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxNvmAddressOutOfRangeError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxNvmAddressOutOfRangeError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxNvmAddressOutOfRangeError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x21</span><span class="p">,</span>
+            <span class="s2">&quot;Address of is outside of the non-volatile memory address space.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxFrameChecksumError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFrameChecksumError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFrameChecksumError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Frame checksum mismatch detected. If this error occurs, no MISO frame will</span>
+<span class="sd">    be sent (internal error only).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFrameChecksumError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFrameChecksumError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFrameChecksumError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x22</span><span class="p">,</span>
+            <span class="s2">&quot;Frame checksum mismatch detected. If this error occurs, no MISO &quot;</span>
+            <span class="s2">&quot;frame will be sent (internal error only).&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxInvalidSpecialFrameIdentifierError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInvalidSpecialFrameIdentifierError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxInvalidSpecialFrameIdentifierError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Illegal special frame identifier.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxInvalidSpecialFrameIdentifierError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInvalidSpecialFrameIdentifierError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxInvalidSpecialFrameIdentifierError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x24</span><span class="p">,</span>
+            <span class="s2">&quot;Illegal special frame identifier.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxFrameCompositionError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFrameCompositionError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFrameCompositionError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Illegal frame composition. Probably wrong data size for given subcommand.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFrameCompositionError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFrameCompositionError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFrameCompositionError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x25</span><span class="p">,</span>
+            <span class="s2">&quot;Illegal frame composition. Probably wrong data size for given &quot;</span>
+            <span class="s2">&quot;subcommand.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxNoBroadcastResponseAvailableError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxNoBroadcastResponseAvailableError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxNoBroadcastResponseAvailableError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Triggered a broadcast response, but no valid response is available at the</span>
+<span class="sd">    moment.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxNoBroadcastResponseAvailableError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxNoBroadcastResponseAvailableError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxNoBroadcastResponseAvailableError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x27</span><span class="p">,</span>
+            <span class="s2">&quot;Triggered a broadcast response, but no valid response is &quot;</span>
+            <span class="s2">&quot;available at the moment.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxInternalFunctionArgumentError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInternalFunctionArgumentError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxInternalFunctionArgumentError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Internal function argument out of range.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxInternalFunctionArgumentError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInternalFunctionArgumentError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxInternalFunctionArgumentError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x28</span><span class="p">,</span>
+            <span class="s2">&quot;Internal function argument out of range.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxI2cNackError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cNackError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxI2cNackError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NACK received from I2C device.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxI2cNackError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cNackError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxI2cNackError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x29</span><span class="p">,</span>
+            <span class="s2">&quot;NACK received from I2C device.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxI2cMasterHoldError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cMasterHoldError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxI2cMasterHoldError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Master hold not released in I2C.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxI2cMasterHoldError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cMasterHoldError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxI2cMasterHoldError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x2A</span><span class="p">,</span>
+            <span class="s2">&quot;Master hold not released in I2C.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxI2cCrcError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cCrcError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxI2cCrcError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    I2C CRC mismatch.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxI2cCrcError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cCrcError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxI2cCrcError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x2B</span><span class="p">,</span>
+            <span class="s2">&quot;I2C CRC mismatch.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxSensorDataWriteError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorDataWriteError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxSensorDataWriteError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sensor data read back differs from written value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxSensorDataWriteError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorDataWriteError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxSensorDataWriteError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x2C</span><span class="p">,</span>
+            <span class="s2">&quot;Sensor data read back differs from written value.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxSensorMeasureLoopNotRunningError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorMeasureLoopNotRunningError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxSensorMeasureLoopNotRunningError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sensor measure loop is not running.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxSensorMeasureLoopNotRunningError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorMeasureLoopNotRunningError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxSensorMeasureLoopNotRunningError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x2D</span><span class="p">,</span>
+            <span class="s2">&quot;Sensor measure loop is not running.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxStartSignalProcessorTimeoutError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxStartSignalProcessorTimeoutError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxStartSignalProcessorTimeoutError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Timeout while starting signal processor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxStartSignalProcessorTimeoutError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxStartSignalProcessorTimeoutError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxStartSignalProcessorTimeoutError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x2E</span><span class="p">,</span>
+            <span class="s2">&quot;Timeout while starting signal processor.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxStopSignalProcessorTimeoutError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxStopSignalProcessorTimeoutError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxStopSignalProcessorTimeoutError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Timeout while stopping signal processor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxStopSignalProcessorTimeoutError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxStopSignalProcessorTimeoutError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxStopSignalProcessorTimeoutError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x2F</span><span class="p">,</span>
+            <span class="s2">&quot;Timeout while stopping signal processor.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxModifySignalProcessorError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxModifySignalProcessorError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxModifySignalProcessorError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not possible to modify signal processor while startup or shut down.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxModifySignalProcessorError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxModifySignalProcessorError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxModifySignalProcessorError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x31</span><span class="p">,</span>
+            <span class="s2">&quot;Not possible to modify signal processor while startup or shut &quot;</span>
+            <span class="s2">&quot;down.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxHardwareCommunicationError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxHardwareCommunicationError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxHardwareCommunicationError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hardware communication failed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxHardwareCommunicationError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxHardwareCommunicationError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxHardwareCommunicationError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x32</span><span class="p">,</span>
+            <span class="s2">&quot;Hardware communication failed.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxInvalidCalibrationIndexError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInvalidCalibrationIndexError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxInvalidCalibrationIndexError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    No valid gas calibration block at given index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxInvalidCalibrationIndexError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInvalidCalibrationIndexError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxInvalidCalibrationIndexError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x33</span><span class="p">,</span>
+            <span class="s2">&quot;No valid gas calibration block at given index.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxInalidSensorFieldError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInalidSensorFieldError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxInalidSensorFieldError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    No valid calibration at given sensor field index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxInalidSensorFieldError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxInalidSensorFieldError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxInalidSensorFieldError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x34</span><span class="p">,</span>
+            <span class="s2">&quot;No valid calibration at given sensor field index.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxI2cStartConditionError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cStartConditionError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxI2cStartConditionError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    I2C lines (SCL or SDA) low before sending start condition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxI2cStartConditionError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxI2cStartConditionError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxI2cStartConditionError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x36</span><span class="p">,</span>
+            <span class="s2">&quot;I2C lines (SCL or SDA) low before sending start condition.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxSupplyVoltageOutOfRangeError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSupplyVoltageOutOfRangeError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxSupplyVoltageOutOfRangeError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Supply voltage out of range.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxSupplyVoltageOutOfRangeError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSupplyVoltageOutOfRangeError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxSupplyVoltageOutOfRangeError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x37</span><span class="p">,</span>
+            <span class="s2">&quot;Supply voltage out of range.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxUnknownHardwareTypeError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxUnknownHardwareTypeError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxUnknownHardwareTypeError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unknown hardware type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxUnknownHardwareTypeError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxUnknownHardwareTypeError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxUnknownHardwareTypeError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x38</span><span class="p">,</span>
+            <span class="s2">&quot;Unknown hardware type.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxUnknownHardwareVersionError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxUnknownHardwareVersionError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxUnknownHardwareVersionError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unknown hardware version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxUnknownHardwareVersionError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxUnknownHardwareVersionError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxUnknownHardwareVersionError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x39</span><span class="p">,</span>
+            <span class="s2">&quot;Unknown hardware version.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxFramWriteError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFramWriteError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFramWriteError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    FRAM write error (read back mismatch).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFramWriteError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFramWriteError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFramWriteError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x3B</span><span class="p">,</span>
+            <span class="s2">&quot;FRAM write error (read back mismatch).&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxFlashWriteError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFlashWriteError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFlashWriteError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flash write error (read back mismatch).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFlashWriteError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFlashWriteError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFlashWriteError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x3C</span><span class="p">,</span>
+            <span class="s2">&quot;Flash write error (read back mismatch).&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxSensorEepromWriteError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorEepromWriteError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxSensorEepromWriteError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sensor EEPROM write error (read back mismatch).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxSensorEepromWriteError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorEepromWriteError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxSensorEepromWriteError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x3D</span><span class="p">,</span>
+            <span class="s2">&quot;Sensor EEPROM write error (read back mismatch).&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxMissingGasPressureError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxMissingGasPressureError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxMissingGasPressureError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Missing gas pressure, could not reach setpoint.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxMissingGasPressureError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxMissingGasPressureError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxMissingGasPressureError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x3F</span><span class="p">,</span>
+            <span class="s2">&quot;Missing gas pressure, could not reach setpoint.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxExternalOscillatorStartupError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxExternalOscillatorStartupError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxExternalOscillatorStartupError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Could not startup external oscillator. System now runs with internal</span>
+<span class="sd">    oscillator (+/- 1%).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxExternalOscillatorStartupError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxExternalOscillatorStartupError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxExternalOscillatorStartupError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x40</span><span class="p">,</span>
+            <span class="s2">&quot;Could not startup external oscillator. System now runs with &quot;</span>
+            <span class="s2">&quot;internal oscillator (+/- 1%).&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCommunicationAdapterNotAvailableError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxCommunicationAdapterNotAvailableError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCommunicationAdapterNotAvailableError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The requested type of communication adapter is not available.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxCommunicationAdapterNotAvailableError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxCommunicationAdapterNotAvailableError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCommunicationAdapterNotAvailableError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x41</span><span class="p">,</span>
+            <span class="s2">&quot;The requested type of communication adapter is not available.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxSensorBusyError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorBusyError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxSensorBusyError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The sensor is busy at the moment.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxSensorBusyError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxSensorBusyError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxSensorBusyError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x42</span><span class="p">,</span>
+            <span class="s2">&quot;The sensor is busy at the moment.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCommandNotAllowedInCurrentStateError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxCommandNotAllowedInCurrentStateError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCommandNotAllowedInCurrentStateError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This command is not allowed in the current state of the device.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxCommandNotAllowedInCurrentStateError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxCommandNotAllowedInCurrentStateError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCommandNotAllowedInCurrentStateError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x43</span><span class="p">,</span>
+            <span class="s2">&quot;This command is not allowed in the current state of the device.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxFunctionalityNotSupportedError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFunctionalityNotSupportedError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFunctionalityNotSupportedError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The device does not support this functionality.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFunctionalityNotSupportedError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFunctionalityNotSupportedError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFunctionalityNotSupportedError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x44</span><span class="p">,</span>
+            <span class="s2">&quot;The device does not support this functionality.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxFatalError"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFatalError">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxFatalError</span><span class="p">(</span><span class="n">ShdlcDeviceError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unspecified or fatal system error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Sfc5xxxFatalError.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.device_errors.Sfc5xxxFatalError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxFatalError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x7F</span><span class="p">,</span>
+            <span class="s2">&quot;Unspecified or fatal system error.&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">List containing all device errors specified in this file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">SFC5XXX_DEVICE_ERROR_LIST</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Sfc5xxxFunctionalityNotImplementedError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxNvmAddressOutOfRangeError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxFrameChecksumError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxInvalidSpecialFrameIdentifierError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxFrameCompositionError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxNoBroadcastResponseAvailableError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxInternalFunctionArgumentError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxI2cNackError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxI2cMasterHoldError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxI2cCrcError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxSensorDataWriteError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxSensorMeasureLoopNotRunningError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxStartSignalProcessorTimeoutError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxStopSignalProcessorTimeoutError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxModifySignalProcessorError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxHardwareCommunicationError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxInvalidCalibrationIndexError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxInalidSensorFieldError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxI2cStartConditionError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxSupplyVoltageOutOfRangeError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxUnknownHardwareTypeError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxUnknownHardwareVersionError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxFramWriteError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxFlashWriteError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxSensorEepromWriteError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxMissingGasPressureError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxExternalOscillatorStartupError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxCommunicationAdapterNotAvailableError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxSensorBusyError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxCommandNotAllowedInCurrentStateError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxFunctionalityNotSupportedError</span><span class="p">(),</span>
+    <span class="n">Sfc5xxxFatalError</span><span class="p">(),</span>
+<span class="p">]</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="device_errors.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
