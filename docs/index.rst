@@ -17,6 +17,7 @@ conversions, checksum calculation, error handling etc.
 
    shdlc
    installation
+   quickstart
    api
 
 

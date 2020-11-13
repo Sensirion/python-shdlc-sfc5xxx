@@ -1,5 +1,8 @@
 include: https://gitlab/Sensirion/Python/ci-config-python/raw/master/gitlab-ci-template-v2.yml
 
+variables:
+  PYTEST_ADDOPTS: '-m "not needs_device"'
+
 check_rst_syntax:
   extends: .check_rst_syntax_v2
 
