@@ -11,5 +11,12 @@ flow) as Python methods and handles all the low-level things like type
 conversions, checksum calculation, error handling etc.
 
 
+Installation and Usage
+----------------------
+
+The user manual is available at
+https://sensirion.github.io/python-shdlc-sfc5xxx/.
+
+
 .. _Sensirion SFC5xxx: https://www.sensirion.com/en/flow-sensors/flow-controllers-for-gases/
 .. _Sensirion SFM5xxx: https://www.sensirion.com/en/flow-sensors/mass-flow-meters-for-gases/
