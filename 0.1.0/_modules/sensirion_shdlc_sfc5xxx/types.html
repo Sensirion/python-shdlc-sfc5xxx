@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sensirion_shdlc_sfc5xxx.types &mdash; sensirion-shdlc-sfc5xxx 0.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sensirion-shdlc-sfc5xxx
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../shdlc.html">SHDLC Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensirion-shdlc-sfc5xxx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>sensirion_shdlc_sfc5xxx.types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sensirion_shdlc_sfc5xxx.types</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># (c) Copyright 2020 Sensirion AG, Switzerland</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Sfc5xxxCalibrationConditions"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.types.Sfc5xxxCalibrationConditions">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCalibrationConditions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing the calibration condition parameters as used to store</span>
+<span class="sd">    the initial calibration conditions and recalibration conditions of</span>
+<span class="sd">    gas calibration blocks.</span>
+
+<span class="sd">    The class provides some public members which you can access directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCalibrationConditions.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.types.Sfc5xxxCalibrationConditions.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span>
+                 <span class="n">inlet_pressure</span><span class="p">,</span> <span class="n">differential_pressure</span><span class="p">,</span>
+                 <span class="n">is_real_gas_calibration</span><span class="p">,</span> <span class="n">accuracy_setpoint</span><span class="p">,</span>
+                 <span class="n">accuracy_fullscale</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        :param str company:</span>
+<span class="sd">            The company which has created the calibration.</span>
+<span class="sd">        :param str operator:</span>
+<span class="sd">            The operator who has created the calibration.</span>
+<span class="sd">        :param ~datetime.datetime datetime:</span>
+<span class="sd">            Date and time when the calibration was created.</span>
+<span class="sd">        :param float temperature:</span>
+<span class="sd">            System/gas temperature [°C].</span>
+<span class="sd">        :param float inlet_pressure:</span>
+<span class="sd">            Absolute pressure of gas inlet [bar].</span>
+<span class="sd">        :param float differential_pressure:</span>
+<span class="sd">            Pressure difference between inlet and outlet [bar].</span>
+<span class="sd">        :param bool is_real_gas_calibration:</span>
+<span class="sd">            Whether the calibration was performed with the real process gas</span>
+<span class="sd">            (true) or if it was calculated from a different gas (false).</span>
+<span class="sd">        :param float accuracy_setpoint:</span>
+<span class="sd">            Calibration accuracy in percent of the setpoint.</span>
+<span class="sd">        :param float accuracy_fullscale:</span>
+<span class="sd">            Calibration accuracy in percent of fullscale.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCalibrationConditions</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1">#: The company which has created the calibration (str).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">company</span> <span class="o">=</span> <span class="n">company</span>
+
+        <span class="c1">#: The operator who has created the calibration (str).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">operator</span> <span class="o">=</span> <span class="n">operator</span>
+
+        <span class="c1">#: Date and time when the calibration was created (datetime).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span>
+
+        <span class="c1">#: System/gas temperature [°C] (float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span>
+
+        <span class="c1">#: Absolute pressure [bar] of gas inlet (float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inlet_pressure</span> <span class="o">=</span> <span class="n">inlet_pressure</span>
+
+        <span class="c1">#: Pressure difference [bar] between inlet and outlet (float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">differential_pressure</span> <span class="o">=</span> <span class="n">differential_pressure</span>
+
+        <span class="c1">#: Whether the calibration was performed with the real process gas</span>
+        <span class="c1">#: (true) or if it was calculated from a different gas (false).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_real_gas_calibration</span> <span class="o">=</span> <span class="n">is_real_gas_calibration</span>
+
+        <span class="c1">#: Calibration accuracy in percent of the setpoint (float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accuracy_setpoint</span> <span class="o">=</span> <span class="n">accuracy_setpoint</span>
+
+        <span class="c1">#: Calibration accuracy in percent of fullscale (float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accuracy_fullscale</span> <span class="o">=</span> <span class="n">accuracy_fullscale</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pretty-print the calibration information.</span>
+
+<span class="sd">        :return: Multiline string representation of the calibration.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Company: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">company</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Operator: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operator</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Date/Time: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Temperature: </span><span class="si">{}</span><span class="s2"> °C</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Inlet Pressure: </span><span class="si">{}</span><span class="s2"> bar</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inlet_pressure</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Differential Pressure: </span><span class="si">{}</span><span class="s2"> bar</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">differential_pressure</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Is Real Gas Calibration: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s1">&#39;Yes&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_real_gas_calibration</span> <span class="k">else</span> <span class="s1">&#39;No&#39;</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Accuracy: </span><span class="si">{}% o</span><span class="s2">f setpoint / </span><span class="si">{}% o</span><span class="s2">f fullscale&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">accuracy_setpoint</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">accuracy_fullscale</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxReadBufferResponse"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.types.Sfc5xxxReadBufferResponse">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxReadBufferResponse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper class representing the response to the &quot;read measured value buffer&quot;</span>
+<span class="sd">    command, i.e. of the method</span>
+<span class="sd">    :py:meth:`~sensirion_shdlc_sfc5xxx.device.Sfc5xxxShdlcDevice.read_measured_value_buffer`.</span>
+
+<span class="sd">    The class provides some public members which you can access directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+
+<div class="viewcode-block" id="Sfc5xxxReadBufferResponse.__init__"><a class="viewcode-back" href="../../api.html#sensirion_shdlc_sfc5xxx.types.Sfc5xxxReadBufferResponse.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scaling</span><span class="p">,</span> <span class="n">read_count</span><span class="p">,</span> <span class="n">lost_values</span><span class="p">,</span> <span class="n">remaining_values</span><span class="p">,</span>
+                 <span class="n">sampling_time</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an instance from the data received from the device.</span>
+
+<span class="sd">        :param ~sensirion_shdlc_sfc5xxx.definitions.Sfc5xxxScaling scaling:</span>
+<span class="sd">            With which scale resp. unit the measured flow was read (parameter</span>
+<span class="sd">            sent to the &quot;read measured value buffer&quot; command).</span>
+<span class="sd">        :param int read_count:</span>
+<span class="sd">            How many times the &quot;read measured value buffer&quot; was executed</span>
+<span class="sd">            to fetch the values contained in this object.</span>
+<span class="sd">        :param int lost_values:</span>
+<span class="sd">            Number of lost values (received from the &quot;read measured value</span>
+<span class="sd">            buffer&quot; command).</span>
+<span class="sd">        :param int remaining_values:</span>
+<span class="sd">            Number of values remaining in the buffer (received from the last</span>
+<span class="sd">            &quot;read measured value buffer&quot; command).</span>
+<span class="sd">        :param float sampling_time:</span>
+<span class="sd">            The sampling time of the measured values in Seconds (received from</span>
+<span class="sd">            the &quot;read measured value buffer&quot; command).</span>
+<span class="sd">        :param list(float) values:</span>
+<span class="sd">            The measured values read from the buffer (received from the &quot;read</span>
+<span class="sd">            measured value buffer&quot; command).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxReadBufferResponse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1">#: The scaling of the measured values</span>
+        <span class="c1">#: (:py:class:`~sensirion_shdlc_sfc5xxx.definitions.Sfc5xxxScaling`).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">=</span> <span class="n">scaling</span>
+
+        <span class="c1">#: How many times the &quot;read measured value buffer&quot; was executed</span>
+        <span class="c1">#: to fetch the values contained in this object (int).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">read_count</span> <span class="o">=</span> <span class="n">read_count</span>
+
+        <span class="c1">#: Number of lost values due to buffer overrun (int).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lost_values</span> <span class="o">=</span> <span class="n">lost_values</span>
+
+        <span class="c1">#: Number of values remaining in the buffer after reading it (int).</span>
+        <span class="c1">#: If the whole buffer was read out, this is zero.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">remaining_values</span> <span class="o">=</span> <span class="n">remaining_values</span>
+
+        <span class="c1">#: The sampling time of the measured values in Seconds (float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span> <span class="o">=</span> <span class="n">sampling_time</span>
+
+        <span class="c1">#: The measured values read from the buffer (list of float).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pretty-print this object.</span>
+
+<span class="sd">        :return: Multiline string representation of the object.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Scaling: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scaling</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Number Of Read Commands: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">read_count</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Lost Values: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lost_values</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Remaining Values: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">remaining_values</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Sampling Time: </span><span class="si">{}</span><span class="s2"> s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;Measured Values (</span><span class="si">{}</span><span class="s2">): </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: 0.1.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="types.html">0.1.0</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../master/index.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

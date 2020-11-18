@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information &mdash; sensirion-shdlc-sfc5xxx 0.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> sensirion-shdlc-sfc5xxx
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../shdlc.html">SHDLC Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">sensirion-shdlc-sfc5xxx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># (c) Copyright 2020 Sensirion AG, Switzerland</span>
+
+<span class="c1">##############################################################################</span>
+<span class="c1">##############################################################################</span>
+<span class="c1">#                 _____         _    _ _______ _____ ____  _   _</span>
+<span class="c1">#                / ____|   /\  | |  | |__   __|_   _/ __ \| \ | |</span>
+<span class="c1">#               | |       /  \ | |  | |  | |    | || |  | |  \| |</span>
+<span class="c1">#               | |      / /\ \| |  | |  | |    | || |  | | . ` |</span>
+<span class="c1">#               | |____ / ____ \ |__| |  | |   _| || |__| | |\  |</span>
+<span class="c1">#                \_____/_/    \_\____/   |_|  |_____\____/|_| \_|</span>
+<span class="c1">#</span>
+<span class="c1">#     THIS FILE IS AUTOMATICALLY GENERATED AND MUST NOT BE EDITED MANUALLY!</span>
+<span class="c1">#</span>
+<span class="c1"># Generator:    sensirion-shdlc-interface-generator 0.8.2</span>
+<span class="c1"># Product:      SFC5xxx</span>
+<span class="c1"># Version:      0.1.0</span>
+<span class="c1">#</span>
+<span class="c1">##############################################################################</span>
+<span class="c1">##############################################################################</span>
+
+<span class="c1"># flake8: noqa</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">sensirion_shdlc_driver.command</span> <span class="kn">import</span> <span class="n">ShdlcCommand</span>
+<span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentCalibrationInformationBase"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentCalibrationInformationBase">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">(</span><span class="n">ShdlcCommand</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    SHDLC command 0x44: &quot;Get Current Calibration Information&quot;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentCalibrationInformationBase.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentCalibrationInformationBase.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="mh">0x44</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasDescription"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasDescription">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentGasDescription</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Gas Description Command</span>
+
+<span class="sd">    Get the gas description string of the currently active calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasDescription.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasDescription.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentGasDescription</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x11</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">255</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasDescription.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasDescription.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: The read gas description string.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gas_description</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># string</span>
+        <span class="k">return</span> <span class="n">gas_description</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasId"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasId">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentGasId</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Gas Id Command</span>
+
+<span class="sd">    Get the gas ID of the currently active calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasId.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasId.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentGasId</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x12</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">4</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasId.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasId.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: The read gas ID.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gas_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;I&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint32</span>
+        <span class="k">return</span> <span class="n">gas_id</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasUnit"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasUnit">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentGasUnit</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Gas Unit Command</span>
+
+<span class="sd">    Get the gas unit of the currently active calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasUnit.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasUnit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentGasUnit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x13</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">3</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentGasUnit.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentGasUnit.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return:</span>
+<span class="sd">            - prefix (int) -</span>
+<span class="sd">              Medium unit prefix, see appendix for encoding.</span>
+<span class="sd">            - unit (int) -</span>
+<span class="sd">              Medium unit, see appendix for encoding.</span>
+<span class="sd">            - timebase (int) -</span>
+<span class="sd">              Timebase, see appendix for encoding.</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;b&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># int8</span>
+        <span class="n">unit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">timebase</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="k">return</span> <span class="n">prefix</span><span class="p">,</span>\
+            <span class="n">unit</span><span class="p">,</span>\
+            <span class="n">timebase</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentFullscale"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentFullscale">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentFullscale</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Fullscale Command</span>
+
+<span class="sd">    Get the fullscale flow of the currently active calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentFullscale.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentFullscale.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentFullscale</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x14</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">4</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentFullscale.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentFullscale.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: The read fullscale flow in the unit of the corresponding</span>
+<span class="sd">                 calibration.</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fullscale</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="k">return</span> <span class="n">fullscale</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentInitialCalibrationConditions"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentInitialCalibrationConditions">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentInitialCalibrationConditions</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Initial Calibration Conditions Command</span>
+
+<span class="sd">    Get the initial calibration conditions of the currently active calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentInitialCalibrationConditions.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentInitialCalibrationConditions.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentInitialCalibrationConditions</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x15</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">127</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">127</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentInitialCalibrationConditions.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentInitialCalibrationConditions.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return:</span>
+<span class="sd">            - company (str) -</span>
+<span class="sd">              The company which has created the calibration.</span>
+<span class="sd">            - operator (str) -</span>
+<span class="sd">              The operator who has created the calibration.</span>
+<span class="sd">            - year (int) -</span>
+<span class="sd">              Year of the calibration date.</span>
+<span class="sd">            - month (int) -</span>
+<span class="sd">              Month of the calibration date.</span>
+<span class="sd">            - day (int) -</span>
+<span class="sd">              Day of the calibration date.</span>
+<span class="sd">            - hour (int) -</span>
+<span class="sd">              Hour of the calibration time.</span>
+<span class="sd">            - minute (int) -</span>
+<span class="sd">              Minute of the calibration time.</span>
+<span class="sd">            - temperature (float) -</span>
+<span class="sd">              System/gas temperature [°C] of calibration.</span>
+<span class="sd">            - inlet_pressure (float) -</span>
+<span class="sd">              Absolute pressure of gas inlet [bar].</span>
+<span class="sd">            - differential_pressure (float) -</span>
+<span class="sd">              Pressure difference between inlet and outlet [bar].</span>
+<span class="sd">            - is_real_gas_calibration (bool) -</span>
+<span class="sd">              Whether the calibration was performed with the real process gas</span>
+<span class="sd">              (true) or if it was calculated from a different gas (false).</span>
+<span class="sd">            - accuracy_setpoint (float) -</span>
+<span class="sd">              Calibration accuracy in percent of the setpoint. This accuracy is</span>
+<span class="sd">              valid if larger than the accuracy of fullscale.</span>
+<span class="sd">            - accuracy_fullscale (float) -</span>
+<span class="sd">              Calibration accuracy in percent of fullscale. This value is valid</span>
+<span class="sd">              if larger than the accuracy of the setpoint.</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">company</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># string&lt;50&gt;</span>
+        <span class="n">operator</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># string&lt;50&gt;</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;H&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">102</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint16</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">102</span><span class="p">:</span><span class="mi">103</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">103</span><span class="p">:</span><span class="mi">104</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">104</span><span class="p">:</span><span class="mi">105</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">minute</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">105</span><span class="p">:</span><span class="mi">106</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">106</span><span class="p">:</span><span class="mi">110</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">inlet_pressure</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">110</span><span class="p">:</span><span class="mi">114</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">differential_pressure</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">114</span><span class="p">:</span><span class="mi">118</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">is_real_gas_calibration</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;?&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">118</span><span class="p">:</span><span class="mi">119</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># bool</span>
+        <span class="n">accuracy_setpoint</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">119</span><span class="p">:</span><span class="mi">123</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">accuracy_fullscale</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">123</span><span class="p">:</span><span class="mi">127</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="k">return</span> <span class="n">company</span><span class="p">,</span>\
+            <span class="n">operator</span><span class="p">,</span>\
+            <span class="n">year</span><span class="p">,</span>\
+            <span class="n">month</span><span class="p">,</span>\
+            <span class="n">day</span><span class="p">,</span>\
+            <span class="n">hour</span><span class="p">,</span>\
+            <span class="n">minute</span><span class="p">,</span>\
+            <span class="n">temperature</span><span class="p">,</span>\
+            <span class="n">inlet_pressure</span><span class="p">,</span>\
+            <span class="n">differential_pressure</span><span class="p">,</span>\
+            <span class="n">is_real_gas_calibration</span><span class="p">,</span>\
+            <span class="n">accuracy_setpoint</span><span class="p">,</span>\
+            <span class="n">accuracy_fullscale</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentRecalibrationConditions"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentRecalibrationConditions">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentRecalibrationConditions</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Recalibration Conditions Command</span>
+
+<span class="sd">    Get the recalibration conditions of the currently active calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentRecalibrationConditions.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentRecalibrationConditions.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentRecalibrationConditions</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x16</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">127</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">127</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentRecalibrationConditions.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentRecalibrationConditions.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return:</span>
+<span class="sd">            - company (str) -</span>
+<span class="sd">              The company which has created the recalibration.</span>
+<span class="sd">            - operator (str) -</span>
+<span class="sd">              The operator who has created the recalibration.</span>
+<span class="sd">            - year (int) -</span>
+<span class="sd">              Year of the recalibration date.</span>
+<span class="sd">            - month (int) -</span>
+<span class="sd">              Month of the recalibration date.</span>
+<span class="sd">            - day (int) -</span>
+<span class="sd">              Day of the recalibration date.</span>
+<span class="sd">            - hour (int) -</span>
+<span class="sd">              Hour of the recalibration time.</span>
+<span class="sd">            - minute (int) -</span>
+<span class="sd">              Minute of the recalibration time.</span>
+<span class="sd">            - temperature (float) -</span>
+<span class="sd">              System/gas temperature [°C] of recalibration.</span>
+<span class="sd">            - inlet_pressure (float) -</span>
+<span class="sd">              Absolute pressure of gas inlet [bar].</span>
+<span class="sd">            - differential_pressure (float) -</span>
+<span class="sd">              Pressure difference between inlet and outlet [bar].</span>
+<span class="sd">            - is_real_gas_calibration (bool) -</span>
+<span class="sd">              Whether the recalibration was performed with the real process gas</span>
+<span class="sd">              (true) or if it was calculated from a different gas (false).</span>
+<span class="sd">            - accuracy_setpoint (float) -</span>
+<span class="sd">              Calibration accuracy in percent of the setpoint. This accuracy is</span>
+<span class="sd">              valid if larger than the accuracy of fullscale.</span>
+<span class="sd">            - accuracy_fullscale (float) -</span>
+<span class="sd">              Calibration accuracy in percent of fullscale. This value is valid</span>
+<span class="sd">              if larger than the accuracy of the setpoint.</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">company</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># string&lt;50&gt;</span>
+        <span class="n">operator</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># string&lt;50&gt;</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;H&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">102</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint16</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">102</span><span class="p">:</span><span class="mi">103</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">103</span><span class="p">:</span><span class="mi">104</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">104</span><span class="p">:</span><span class="mi">105</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">minute</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;B&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">105</span><span class="p">:</span><span class="mi">106</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint8</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">106</span><span class="p">:</span><span class="mi">110</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">inlet_pressure</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">110</span><span class="p">:</span><span class="mi">114</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">differential_pressure</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">114</span><span class="p">:</span><span class="mi">118</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">is_real_gas_calibration</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;?&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">118</span><span class="p">:</span><span class="mi">119</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># bool</span>
+        <span class="n">accuracy_setpoint</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">119</span><span class="p">:</span><span class="mi">123</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="n">accuracy_fullscale</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;f&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">123</span><span class="p">:</span><span class="mi">127</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># float</span>
+        <span class="k">return</span> <span class="n">company</span><span class="p">,</span>\
+            <span class="n">operator</span><span class="p">,</span>\
+            <span class="n">year</span><span class="p">,</span>\
+            <span class="n">month</span><span class="p">,</span>\
+            <span class="n">day</span><span class="p">,</span>\
+            <span class="n">hour</span><span class="p">,</span>\
+            <span class="n">minute</span><span class="p">,</span>\
+            <span class="n">temperature</span><span class="p">,</span>\
+            <span class="n">inlet_pressure</span><span class="p">,</span>\
+            <span class="n">differential_pressure</span><span class="p">,</span>\
+            <span class="n">is_real_gas_calibration</span><span class="p">,</span>\
+            <span class="n">accuracy_setpoint</span><span class="p">,</span>\
+            <span class="n">accuracy_fullscale</span></div></div>
+
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentThermalConductivityReference"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentThermalConductivityReference">[docs]</a><span class="k">class</span> <span class="nc">Sfc5xxxCmdGetCurrentThermalConductivityReference</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentCalibrationInformationBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Current Thermal Conductivity Reference Command</span>
+
+<span class="sd">    Get the thermal conductivity reference value of the currently active</span>
+<span class="sd">    calibration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentThermalConductivityReference.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentThermalConductivityReference.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sfc5xxxCmdGetCurrentThermalConductivityReference</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x17</span><span class="p">]))]),</span>
+            <span class="n">max_response_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">post_processing_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">min_response_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">max_response_length</span><span class="o">=</span><span class="mi">2</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sfc5xxxCmdGetCurrentThermalConductivityReference.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_shdlc_sfc5xxx.commands.get_current_calibration_information.Sfc5xxxCmdGetCurrentThermalConductivityReference.interpret_response">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: Thermal conductivity reference value for the gas.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reference_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;H&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># uint16</span>
+        <span class="k">return</span> <span class="n">reference_value</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: 0.1.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="get_current_calibration_information.html">0.1.0</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../master/index.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
