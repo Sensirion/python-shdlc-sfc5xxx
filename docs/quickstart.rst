@@ -5,6 +5,7 @@ Following example code shows how the driver is intended to use:
 
 .. sourcecode:: python
 
+    # -*- coding: utf-8 -*-
     import time
     from sensirion_shdlc_driver import ShdlcSerialPort, ShdlcConnection
     from sensirion_shdlc_sfc5xxx import Sfc5xxxShdlcDevice, Sfc5xxxScaling, \
