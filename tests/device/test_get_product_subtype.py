@@ -12,4 +12,4 @@ def test(device):
     """
     product_subtype = device.get_product_subtype()
     assert type(product_subtype) is int
-    assert 0 <= product_subtype <= 10
+    assert 0 <= product_subtype <= 30
