@@ -18,15 +18,7 @@ conversions, checksum calculation, error handling etc.
    shdlc
    installation
    quickstart
+   development
    api
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
-
-
-.. _Sensirion SFC5xxx: https://www.sensirion.com/en/flow-sensors/flow-controllers-for-gases/
-.. _Sensirion SFM5xxx: https://www.sensirion.com/en/flow-sensors/mass-flow-meters-for-gases/
+.. _Sensirion SFC5xxx: https://sensirion.com/products/catalog/mass-flow-controllers?interfaces=rs485&page=1&page_size=12&series=SFC5300%2CSFC5400%2CSFC5500
+.. _Sensirion SFM5xxx: https://sensirion.com/products/catalog/gas-flow-sensors?interfaces=rs485&page=1&page_size=12&series=SFM5xxx&statuses=active

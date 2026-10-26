@@ -1,21 +1,28 @@
 # Python Driver for Sensirion Mass Flow Controllers/Meters
 
-This repository contains the SHDLC driver for the Sensirion SFC5xxx MFCs and
-SFM5xxx MFMs as a Python package. For details, please read the package
-description in [README.rst](README.rst).
+This package contains the SHDLC driver for the `Sensirion SFC5xxx`_ mass flow
+controllers and `Sensirion SFM5xxx`_ mass flow meters which have an RS485
+interface using the SHDLC protocol. MFCs and MFMs which do not have an SHDLC
+interface are not supported by this driver.
 
-## Usage
+The driver provides all SHDLC commands (e.g. set setpoint and read measured
+flow) as Python methods and handles all the low-level things like type
+conversions, checksum calculation, error handling etc.
 
-See package description in [README.rst](README.rst) and user manual at
+## Documentation & Quickstart
+
+See the [documentation page](https://sensirion.github.io/python-shdlc-sfc5xxx) for an API description and a
+[quickstart](https://sensirion.github.io/python-shdlc-sfc5xxx/execute-measurements.html) example.
 https://sensirion.github.io/python-shdlc-sfc5xxx/.
 
-## Development
+
+## Contributing
 
 We develop and test this driver using our company internal tools (version
 control, continuous integration, code review etc.) and automatically
-synchronize the `master` branch with GitHub. But this doesn't mean that we
+synchronize the `main` branch with GitHub. But this doesn't mean that we
 don't respond to issues or don't accept pull requests on GitHub. In fact,
-you're very welcome to open issues or create pull requests :)
+you're very welcome to open issues or create pull requests :-)
 
 ### Check coding style
 
@@ -26,41 +33,12 @@ pip install -e .[test]  # Install requirements
 flake8                  # Run style check
 ```
 
-### Run tests
-
-Unit tests can be run with [`pytest`](https://pytest.org/):
-
-```bash
-pip install -e .[test]          # Install requirements
-pytest -m "not needs_device"    # Run tests without hardware
-pytest                          # Run all tests
-```
-
-The tests with the marker `needs_device` have following requirements:
-
-- An SFC5xxx device must be connected to the computer.
-  - *NOTE: Firmware version must be 1.66 or higher.*
-  - **WARNING: Some tests modify non-volatile configurations of the MFC, restore
-    factory defaults etc.! Do not run the tests on a device which you don't
-    want to get modified!**
-- You have to specify the serial port (and optionally other connection
-  parameters) used to connect to the SFC5xxx device:
-  - `--serial-port`: The serial port where the device is connected
-    (e.g. `COM7`).
-  - `--serial-bitrate`: The bitrate of the connected device (defaults to
-    `115200`).
-  - `--slave-address`: The slave address of the connected device (defaults to
-    `0`).
-
-
-### Build documentation
-
-The documentation can be built with [Sphinx](http://www.sphinx-doc.org/):
+In addition, we check the formatting of files with
+[`editorconfig-checker`](https://editorconfig-checker.github.io/):
 
 ```bash
-python setup.py install                        # Install package
-pip install -r docs/requirements.txt           # Install requirements
-sphinx-versioning build docs docs/_build/html  # Build documentation
+pip install editorconfig-checker==2.0.3   # Install requirements
+editorconfig-checker                      # Run check
 ```
 
 ## License
