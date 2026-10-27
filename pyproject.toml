@@ -7,7 +7,7 @@ name = "sensirion_shdlc_sfc5xxx"
 description = "I2C driver for the Sensirion sfc5xxx sensor family"
 
 readme = "README.md"
-version =  "1.0.0"
+version =  "0.1.0"
 
 requires-python = ">=3.8.4,<4.0"
 
